@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html ng-app="myCalculator">
+<div style="background-color: gray">
+	<head>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="device-width, intial-scale=1">
+		<link rel="stylesheet" type="text/css" href="assets/calculator.css"/>
+		<script type="text/javascript" src="assets/angular.min.js"></script>
+		<script type="text/javascript" src="assets/calculator.js"></script>
+		<title>Calculator</title>
+	</head>
+	<header>
+	<div style="background-color: rgb(0, 102, 255)">
+	<h3><img src="assets/images/nfl.jpg" align="right"/><img src="assets/images/logo.jpg"/>   Colts Jersey Sales</h3>
+
+	</header>
+	<body>
+	<center>
+		<img src="assets/images/12.jpg" style="float: center"/>
+		<img src="assets/images/Manning.jpg"/>
+		<img src="assets/images/mathis.jpg"/>
+		<img src="assets/images/dwight.jpg"/>
+		<img src="assets/images/dallas.jpg"/>
+		</center>
+	<center>
+		
+		<div id="myCalculator" ng-controller="CalculatorController">
+		
+		<main>
+			<section class="inc" >
+				<div>
+					<h4>Colts Jersey Sales</h4>
+					<p>{{inc_wattage}}</p>
+					<p>99.99</p>
+				</div>
+			</section>
+			<section class="hal">
+				<div>
+					<h4>Colts Hat Sales</h4>
+					<p>{{hal_wattage}}</p>
+					<p>19.99</p>
+				</div>
+			</section>
+			<section class="led" style="font: blue">
+				<div>
+					<h4>Colts Flag Sales</h4>
+					<p>{{cfl_wattage}}</p>
+					<p>9.99</p>
+				</div>
+			</section>
+			<section class="cfl">	
+				<div>
+					<h4>Colts Special Items</h4>
+					<p>{{led_wattage}}</p>
+					<p>20.00</p>
+				</div>
+			</section>
+		</main>
+		
+		<form>
+			<div>
+				<h4>Number of Units Per Unit</h4>
+				<p></p>
+				<select ng-change="calculate()" ng-model="current_lumens" ng-options="o as o for o in lumen_options">
+				</select>
+				
+			</div>
+
+		</form>
+		
+		</div>
+		
+		</center>
+	</body>
+	<footer style="background-color: black"/>
+	<center><img src="assets/images/slogan.jpg" style="float: center"/></center>
+	</footer>
+</html>
