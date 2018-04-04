@@ -1,0 +1,96 @@
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.JTextField;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
+public class CurrencyConverterFrame extends JFrame {
+	// instance variables 
+	JLabel labelUS;
+	JLabel labelEuros;
+	JTextField textUS;
+	JTextField textEuros;
+	JButton conUS;
+	JButton conEuros;
+	
+	public CurrencyConverterFrame () {
+		
+		super ("Currency Converter");
+		setLayout (new FlowLayout ());
+		
+		labelUS = new JLabel ("US Dollars: ", SwingConstants.LEFT);
+		labelUS.setToolTipText("This is the worth of Eruos:");
+		add (labelUS);
+		textUS = new JTextField (10);
+		add (textUS);
+		
+		labelEuros = new JLabel ("Euros:       ", SwingConstants.LEFT);
+		labelEuros.setToolTipText("This is a the worth of US Dollars:");
+		add (labelEuros);
+		textEuros = new JTextField (10);
+		add (textEuros);
+		
+		conUS = new JButton ("Convert US Dollars to Euros:");
+		add (conUS);
+		conEuros = new JButton ("Convert Euros to US Dollars:");
+		add (conEuros);
+		
+		JPanel panel = new JPanel(new GridLayout(2, 2, 12, 6));
+		panel.add(labelUS);
+		panel.add(labelEuros);
+		panel.add(textUS);
+		panel.add(textEuros);
+		add(panel, BorderLayout.EAST);
+		
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.add(conUS);
+		buttonPanel.add(conEuros);	
+		add(buttonPanel, BorderLayout.SOUTH);
+		
+		conUS.addActionListener(new FahrListener ());
+		conEuros.addActionListener(new CelsListener ());
+		
+	} // end constructor 
+	
+	private class FahrListener implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			if (event.getSource() == conUS){
+				int con1 = (int) ((1/0.84 * (((Double.parseDouble(textUS.getText()))))));
+				textEuros.setText("Euros: " + con1);
+				textUS.requestFocus();
+				textUS.selectAll();
+			} // end if statement
+			
+		} // end actionPerformed
+	} // end USListener
+	
+	private class CelsListener implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			if (event.getSource() == conEuros){
+				int con2 = (int) (( 1*0.84 * (((Double.parseDouble(textEuros.getText()))))));
+				textUS.setText( "$ " +con2);
+				textEuros.requestFocus();
+				textEuros.selectAll();
+			} // end if statement
+			
+		} // end actionPerformed
+	} // end EuroListener
+	
+} // end class ConvertFrame
+
+
+import javax.swing.JFrame;
+
+public class CurrencyConverterTest extends CurrencyConverterFrame {
+	public static void main(String[] args) {
+		
+		CurrencyConverterFrame CurrencyConverterFrame = new CurrencyConverterFrame ();
+		CurrencyConverterFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+		CurrencyConverterFrame.setSize (300, 200); // set the frame size
+		CurrencyConverterFrame.setVisible (true); // display frame
+	} // end main method
+} // end class ConvertTest
+
