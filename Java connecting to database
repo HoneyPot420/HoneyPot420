@@ -1,0 +1,52 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication3;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+/**
+ *
+ * @author ManningLuck45
+ */
+public class JavaApplication3 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+       
+        try{
+        String host = "jdbc:derby://localhost:1527/Employees"; //server name
+        String uName = "admin1";//username
+        String uPass = "admin1";//password
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        
+        Statement stmt =con.createStatement();
+        String sql = "Select * From UNTITLED";//QUERY
+        ResultSet rs = stmt.executeQuery(sql);
+        
+        while(rs.next())
+                {
+                    int id_col = rs.getInt("ID"); //EMPLOYEE ID NUMBER
+                    String first_name = rs.getString("First_Name"); //EMPLOYEE FIRSTNAME
+                    String last_name = rs.getString("Last_Name"); //EMPLOYEE LASTNAME
+                    String job = rs.getString("Job_Title"); //EMPLOYEE JOB TITLE
+                    
+                    String p = id_col + " \n" + first_name + " \n" + last_name + " \n" + job + " \n";
+                    System.out.print(p); //DISPLAYS EMPLOYEE INFO
+                }
+    }
+        catch(SQLException err)
+                {
+                    System.out.println(err.getMessage()); //IF ERROR
+                }
+    }
+    
+}
